@@ -1,7 +1,12 @@
+import os
+from pathlib import Path
 
-HOME_DIR = '../../FLIP/' #FLIP home directory
-BASELINE_DIR = HOME_DIR + 'baselines/'
-DATA_DIR = HOME_DIR + 'splits/'
+filepaths_path = Path(os.path.dirname(os.path.abspath(__file__)))
+home_path = filepaths_path / '..'
+
+HOME_DIR = str(home_path) #FLIP home directory
+BASELINE_DIR = str(home_path / 'baselines')
+DATA_DIR = str(home_path / 'splits')
 
 EMBEDDING_DIR = 'embeddings/'
 RESULTS_DIR = '../FLIP_results/'
