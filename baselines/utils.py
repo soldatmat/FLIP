@@ -139,6 +139,9 @@ def load_dataset(dataset, split, val_split = True, gb1_shorten=False):
         print('shortening gb1 to first 56 AAs')
         df.sequence = df.sequence.apply(lambda s: s[:56])
     
+    return prepare_dataset(df, val_split)
+    
+def prepare_dataset(df, val_split):
     df.sequence = df.sequence.apply(lambda s: re.sub(r'[^A-Z]', '', s.upper())) #remove special characters
     max_length = max(df.sequence.str.len())
     
