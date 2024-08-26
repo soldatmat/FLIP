@@ -58,6 +58,7 @@ class ASCollater(object):
         for i in padded:
             i_onehot = torch.FloatTensor(maxlen, len(self.alphabet))
             i_onehot.zero_()
+            i = i.to(torch.int64)
             i_onehot.scatter_(1, i, 1)
             ohe.append(i_onehot)
         padded = torch.stack(ohe)
