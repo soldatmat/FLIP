@@ -35,8 +35,9 @@ def regression_eval(predicted, labels, SAVE_PATH):
     input: 1D tensor or array of predicted values and labels
     output: saves spearman, MSE, and graph of predicted vs actual 
     """
-    predicted = np.array(predicted)
-    labels = np.array(labels)
+    nan_indexes = np.isnan(labels)
+    predicted = np.array(predicted)[~nan_indexes]
+    labels = np.array(labels)[~nan_indexes]
 
     rho, _ = stats.spearmanr(predicted, labels) # spearman
     mse = mean_squared_error(predicted, labels) # MSE
